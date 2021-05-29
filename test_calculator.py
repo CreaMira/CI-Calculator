@@ -1,5 +1,3 @@
-
-
 import calculator
 
 
@@ -9,5 +7,3 @@ class TestCalculatorApp:
 
     def test_substract(self):
         assert 1 == calculator.subtract(3, 2)
-
-
