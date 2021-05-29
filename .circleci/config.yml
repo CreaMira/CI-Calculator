@@ -1,0 +1,23 @@
+# Define the jobs we want to run for this project
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.7
+    
+    steps:
+      # 1
+      - checkout
+      # 2
+      - run:
+          name: install dependencies
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install -r requirements.test
+      # 3
+      - run:
+          name: run test
+          command: |
+            . venv/bin/activate
+            flake8 --exculde=venv* --statistics
+            pytest -v --cov=calculator
